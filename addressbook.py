@@ -38,4 +38,12 @@ class AddressBook:
             # Here you can add code to edit the contact's details
         else:
             print("Contact not found.")
+
+    def delete_contact(self,name):
+        if name in self.contacts:
+            del self.contacts[name]
+            print("Contact deleted successfully.")
+        else:
+            print("Contact not found.")
+
             
