@@ -61,6 +61,21 @@ class AddressBook:
                 results.append(contact)
         return results
     
+    ## Showing person by state or city
+    def show_by_city_or_state(self, location):
+        results = self.search_by_city_or_state(location)
+        if results:
+            print(f"Contacts in {location}:")
+            for contact in results:
+                print(f'{contact.first_name} {contact.last_name}')
+        else:
+            print(f"No contacts found in {location}.")
+
+    ## No of contacts on the basis of city or state
+    def noOfcontacts_by_city_or_state(self,location):
+        results=self.search_by_city_or_state(location)
+        return len(results)
+    
     
 
             
