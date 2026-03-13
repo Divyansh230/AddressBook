@@ -50,4 +50,14 @@ class AddressBook:
         else:
             print("Contact not found.")
 
+
+    def search_by_city_or_state(self, location):
+        results = []
+        for contact in self.contacts.values():
+            if contact.city == location or contact.state == location:
+                results.append(contact)
+        return results
+    
+    
+
             
