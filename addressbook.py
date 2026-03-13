@@ -11,6 +11,7 @@ class AddressBook:
             print("Contact added successfully.")
         else:
             print("Contact already exists.")
+
     ## to edit the contact
     def edit_contact(self,name):
         if name in self.contacts:
@@ -64,6 +65,15 @@ class AddressBook:
     ## Sorting the contact on the basis of First Name
     def sort_by_name(self):
         return sorted(self.contacts.values(),lambda x:x.first_name)
+    
+    def sort_by_city(self):
+        return sorted(self.contacts.values(),lambda x:x.city)
+    
+    def sort_by_state(self):
+        return sorted(self.contacts.values(),lambda x:x.state)
+    
+    def sort_by_zip(self):
+        return sorted(self.contacts.values(),lambda x:x.zip)
     
     ## Showing person by state or city
     def show_by_city_or_state(self, location):
