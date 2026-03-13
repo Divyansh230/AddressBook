@@ -39,6 +39,10 @@ class AddressBook:
         else:
             print("Contact not found.")
 
+    def add_multiple_contacts(self, *contacts):
+        for contact in contacts:
+            self.add_contact(contact)
+
     def delete_contact(self,name):
         if name in self.contacts:
             del self.contacts[name]
