@@ -65,9 +65,6 @@ class AddressBook:
     def sort_by_name(self):
         return sorted(self.contacts.values(),lambda x:x.first_name)
     
-    
-    
-    
     ## Showing person by state or city
     def show_by_city_or_state(self, location):
         results = self.search_by_city_or_state(location)
