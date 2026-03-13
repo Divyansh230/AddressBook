@@ -3,6 +3,7 @@ class AddressBook:
     def __init__(self):
         self.contacts = {}
 
+    ##To add Contact to the book
     def add_contact(self, contact):
 
         if contact not in self.contacts:
@@ -10,7 +11,7 @@ class AddressBook:
             print("Contact added successfully.")
         else:
             print("Contact already exists.")
-
+    ## to edit the contact
     def edit_contact(self,name):
         if name in self.contacts:
             contact = self.contacts[name]
@@ -35,14 +36,16 @@ class AddressBook:
                     contact.email = input("Enter new email: ")
                 case _:
                     print("Invalid choice.")
-            # Here you can add code to edit the contact's details
+            
         else:
             print("Contact not found.")
 
+    ## Adding multiple user to the contact
     def add_multiple_contacts(self, *contacts):
         for contact in contacts:
             self.add_contact(contact)
 
+    ## deleting the contact by name
     def delete_contact(self,name):
         if name in self.contacts:
             del self.contacts[name]
@@ -50,7 +53,7 @@ class AddressBook:
         else:
             print("Contact not found.")
 
-
+    ##Searching contacts by state or city
     def search_by_city_or_state(self, location):
         results = []
         for contact in self.contacts.values():
