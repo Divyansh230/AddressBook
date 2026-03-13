@@ -35,7 +35,7 @@ class AddressBook:
                     contact.email = input("Enter new email: ")
                 case _:
                     print("Invalid choice.")
-            # Here you can add code to edit the contact's details
+            
         else:
             print("Contact not found.")
 
