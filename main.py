@@ -1,5 +1,4 @@
 class AddressBookMain:
-
     @staticmethod
     def main():
         print("Welcome to the Address Book Application!")
