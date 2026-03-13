@@ -61,6 +61,10 @@ class AddressBook:
                 results.append(contact)
         return results
     
+    ## Sorting the contact on the basis of First Name
+    def sort_by_name(self):
+        return sorted(self.contacts.values(),lambda x:x.first_name)
+    
     
     
     
