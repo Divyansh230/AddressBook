@@ -1,54 +1,61 @@
-from addressbookManager import AddressBookManager
-from contact import Contact
-class AddressBookMain:
+from service.addressbook_manager import AddressBookManager
+from models.contact import Contact
 
 
-    @staticmethod
-    def main():
-        manager = AddressBookManager()
+def main():
+    manager = AddressBookManager()
 
-        while True:
+    while True:
+        print("\n=== Address Book Application ===")
+        print("1. Create Address Book")
+        print("2. Add Contact")
+        print("3. Display Contacts")
+        print("4. Exit")
 
-            print("1 Create Address Book")
-            print("2 Add Contact")
-            print("3 Display Contacts")
-            print("4 Exit")
+        try:
+            choice = int(input("Enter choice: ").strip())
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
 
-            choice = int(input("Enter choice: "))
+        if choice == 1:
+            name = input("Enter AddressBook name: ").strip()
+            if not name:
+                print("Book name cannot be empty.")
+                continue
+            manager.add_book(name)
 
-            if choice == 1:
+        elif choice == 2:
+            book_name = input("Enter AddressBook name: ").strip()
+            book = manager.get_book(book_name)
+            if not book:
+                continue
 
-                name = input("Enter AddressBook name: ")
-                manager.add_book(name)
+            contact = Contact(
+                input("First Name: ").strip(),
+                input("Last Name: ").strip(),
+                input("Address: ").strip(),
+                input("City: ").strip(),
+                input("State: ").strip(),
+                input("Zip: ").strip(),
+                input("Phone: ").strip(),
+                input("Email: ").strip(),
+            )
+            book.add_contact(contact)
 
-            elif choice == 2:
+        elif choice == 3:
+            book_name = input("Enter AddressBook name: ").strip()
+            book = manager.get_book(book_name)
+            if book:
+                book.display_contacts()
 
-                book = manager.get_book(input("Enter AddressBook name: "))
+        elif choice == 4:
+            print("Exiting Address Book. Goodbye!")
+            break
 
-                if book:
+        else:
+            print("Invalid choice. Please try again.")
 
-                    contact = Contact(
-                        input("First Name: "),
-                        input("Last Name: "),
-                        input("Address: "),
-                        input("City: "),
-                        input("State: "),
-                        input("Zip: "),
-                        input("Phone: "),
-                        input("Email: ")
-                    )
 
-                    book.add_contact(contact)
-
-            elif choice == 3:
-
-                book = manager.get_book(input("Enter AddressBook name: "))
-
-                if book:
-                    book.display_contacts()
-
-            elif choice == 4:
-                break
-
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
