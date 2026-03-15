@@ -1,4 +1,5 @@
 import csv
+import json
 
 class FileIO:
 
@@ -65,7 +66,35 @@ class FileIO:
                 contacts.append(row)
 
         return contacts
+    
+    @staticmethod
+    def write_to_json(contacts,filename='contacts.json'):
+        data=[]
 
+        for contact in contacts.values():
+            data.append({
+                "first_name": contact.first_name,
+                "last_name": contact.last_name,
+                "address": contact.address,
+                "city": contact.city,
+                "state": contact.state,
+                "zip_code": contact.zip_code,
+                "phone_number": contact.phone_number,
+                "email": contact.email
+            })
+
+        with open(filename,'w') as file:
+            json.dump(data,file,indent=4)
+        print('Contacts added successfully')
+
+    @staticmethod
+    def read_from_json(filename="contacts.json"):
+
+        with open(filename, "r") as file:
+
+            data = json.load(file)
+
+        return data
     
     
 
