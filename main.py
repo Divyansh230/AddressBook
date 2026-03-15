@@ -1,13 +1,54 @@
+from addressbookManager import AddressBookManager
+from contact import Contact
 class AddressBookMain:
+
+
     @staticmethod
     def main():
-        print("Welcome to the Address Book Application!")
-        address_book_manager = AddressBookManager()
-        address_book_manager.add_book("Personal")
-        personal_book = address_book_manager.get_book("Personal")
-        contact1 = Contact("John", "Doe", "123 Main St", "Anytown", "Anystate", "12345", "555-1234", "ff")
-        personal_book.add_contact(contact1)
-        print("Current contacts in Personal Address Book:")
+        manager = AddressBookManager()
+
+        while True:
+
+            print("1 Create Address Book")
+            print("2 Add Contact")
+            print("3 Display Contacts")
+            print("4 Exit")
+
+            choice = int(input("Enter choice: "))
+
+            if choice == 1:
+
+                name = input("Enter AddressBook name: ")
+                manager.add_book(name)
+
+            elif choice == 2:
+
+                book = manager.get_book(input("Enter AddressBook name: "))
+
+                if book:
+
+                    contact = Contact(
+                        input("First Name: "),
+                        input("Last Name: "),
+                        input("Address: "),
+                        input("City: "),
+                        input("State: "),
+                        input("Zip: "),
+                        input("Phone: "),
+                        input("Email: ")
+                    )
+
+                    book.add_contact(contact)
+
+            elif choice == 3:
+
+                book = manager.get_book(input("Enter AddressBook name: "))
+
+                if book:
+                    book.display_contacts()
+
+            elif choice == 4:
+                break
 
     if __name__ == "__main__":
         main()
